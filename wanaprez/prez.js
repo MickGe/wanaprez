@@ -253,7 +253,6 @@ function _doPrez({rootNode, slides, title}) {
     }
 
     function _onTouchStart(event) {
-        console.log(event);
         if (event.touches.length !== 1) return;
 
         touchDrag = event.touches[0].screenY;
@@ -281,6 +280,16 @@ function _doPrez({rootNode, slides, title}) {
         touchDrag = null;
     }
 
+    function _targetBlankLink() {
+        const targetLinks = document.getElementsByTagName("a");
+         for (const targetLink in targetLinks) {
+             if (Object.hasOwnProperty.call(targetLinks, targetLink)) {
+                 const element = targetLinks[targetLink];
+                 element.target = "_blank"
+             }
+         }
+    }
+
     document.body.appendChild(rootNode);
     document.addEventListener("keydown", _onKeydown);
     document.addEventListener("mousewheel", _onMousewheel);
@@ -293,6 +302,7 @@ function _doPrez({rootNode, slides, title}) {
     _scalePrez();
     _updateSlides();
     _updatePrez();
+    _targetBlankLink();
 
 }
 
