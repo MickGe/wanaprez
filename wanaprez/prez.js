@@ -12,6 +12,7 @@ const KEY_UP = 38;
 const KEY_RIGHT = 39;
 const KEY_DOWN = 40;
 const KEY_F = 70;
+const KEY_C = 67;
 
 let config = {
     url: "/",
@@ -28,6 +29,29 @@ function _toggleFullscreen() {
         });
     } else {
         document.exitFullscreen();
+    }
+}
+
+function _toggleColors() {
+    const light = document.documentElement.style.getPropertyValue('--color-main-after') === "";
+    const dark01 = {
+        "--color-main-background": "#031117",
+        "--color-main-slide-background": "#122128",
+        "--color-main-color": "#fff",
+        "--color-main-slide-color": "#fff",
+        "--color-main-after": "#ffe200",
+        "--color-main-color-h2": "#cfd7cc",
+        "--color-main-color-h3": "#b1bbad"
+    }
+    for (const color in dark01) {
+        if (Object.hasOwnProperty.call(dark01, color)) {
+            const element = dark01[color];
+            if (light) {
+                document.documentElement.style.setProperty(color, element)
+            } else {
+                document.documentElement.style.setProperty(color, "")
+            }
+        }
     }
 }
 
@@ -194,6 +218,9 @@ function _doPrez({rootNode, slides, title}) {
                 break;
             case KEY_F:
                 _toggleFullscreen();
+                break;
+            case KEY_C:
+                _toggleColors();
                 break;
         }
     }

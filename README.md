@@ -39,6 +39,8 @@ Slide 3
 
 Press <kbd>F</kbd> to toggle fullscreen.
 
+Press <kbd>C</kbd> to toggle colors (light - dark).
+
 ## Demo
 
 Look at the demo prez here:

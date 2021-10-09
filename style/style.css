@@ -7,11 +7,21 @@
     src: url("./fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf");
 }
 
+:root {
+	--color-main-background: #34005b;
+	--color-main-slide-background: #fff;
+	--color-main-color: #fff;
+	--color-main-slide-color: #000;
+	--color-main-after: #ff02a7;
+	--color-main-color-h2: #6441db;
+	--color-main-color-h3: #34005b;
+}
+
 html, body {
     margin: 0;
     padding: 0;
-    background: #fff;
-    color: #000;
+	background: var( --color-main-slide-background );
+	color: var( --color-main-slide-color );
     font-family: "Raleway", sans-serif;
     font-size: 20pt;
     width: 100%;
@@ -22,8 +32,8 @@ html, body {
 }
 
 body.on-type-main-title {
-    background: #34005b;
-    color: #fff;
+	background: var( --color-main-background );
+	color: var( --color-main-color );
 }
 
 #wanaprez {
@@ -74,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
 h2:after,
 h3:after {
     content: " ";
-    background-color: #ff02a7;
+	background-color: var( --color-main-after );
     display: block;
     width: 100px;
     height: 10px;
@@ -87,7 +97,7 @@ h1 {
 
 h2 {
     font-size: 200%;
-    color: #6441db;
+	color: var( --color-main-color-h2 );
     line-height: 1.5em;
 }
 
@@ -97,7 +107,7 @@ h2:after {
 
 h3 {
     font-size: 150%;
-    color: #34005b;
+	color: var( --color-main-color-h3 );
     line-height: 1.5em;
 }
 
@@ -131,13 +141,13 @@ img {
 }
 
 #wanaprez-home h1 {
-    color: #6441db;
+	color: var( --color-main-color-h2 );
     text-align: center;
 }
 
 #wanaprez-home h1:after {
     content: " ";
-    background-color: #ff02a7;
+	background-color: var( --color-main-after );
     display: block;
     width: 100px;
     height: 10px;
@@ -145,7 +155,7 @@ img {
 }
 
 #wanaprez-home h2 {
-    color: #34005b;
+	color: var( --color-main-color-h3 );
     font-size: 150%;
     clear: both;
 }
@@ -167,7 +177,7 @@ img {
 #wanaprez-home button {
     font-family: "Cantarell", sans-serif;
     font-size: 12pt;
-    display: inline-block;
+    /* display: inline-block; */
     height: 40px;
     line-height: 30px;
     border-radius: 20px;
@@ -181,15 +191,15 @@ img {
     transition: background 300ms, border 300ms, color 300ms;
     box-sizing: border-box;
     border-color: transparent;
-    background: #FF00A4;
-    color: #fff;
+	background: var( --color-main-after );
+	color: var( --color-main-slide-background );
     outline: none;
     min-width: 100px;
     float: right;
 }
 
 #wanaprez-home button:hover {
-    border-color: #FF00A4;
+	background: var( --color-main-after );
     background: transparent;
-    color: #FF00A4
+	background: var( --color-main-after );
 }
