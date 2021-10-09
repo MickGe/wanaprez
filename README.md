@@ -37,6 +37,7 @@ Just write Markdown... It is as simple as that!
 Slide 3
 ```
 
+Press <kbd>F</kbd> to toggle fullscreen.
 
 ## Demo
 
