@@ -139,6 +139,10 @@ img {
     border: #222 solid 1px;
 }
 
+img.noborder {
+    border: unset;
+}
+
 p > img {
     box-shadow: var( --color-main-slide-color ) 2px 2px 5px;
     border-radius: 5px;
