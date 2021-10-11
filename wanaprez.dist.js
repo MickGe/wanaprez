@@ -52731,7 +52731,10 @@ function _toggleFullscreen() {
 }
 
 function _toggleColors() {
-    const light = document.documentElement.style.getPropertyValue('--color-main-after') === "";
+    const light =
+        document.documentElement.style.getPropertyValue(
+            "--color-main-after"
+        ) === "";
     const dark01 = {
         "--color-main-background": "#031117",
         "--color-main-slide-background": "#122128",
@@ -52739,21 +52742,21 @@ function _toggleColors() {
         "--color-main-slide-color": "#fff",
         "--color-main-after": "#ffe200",
         "--color-main-color-h2": "#cfd7cc",
-        "--color-main-color-h3": "#b1bbad"
-    }
+        "--color-main-color-h3": "#b1bbad",
+    };
     for (const color in dark01) {
         if (Object.hasOwnProperty.call(dark01, color)) {
             const element = dark01[color];
             if (light) {
-                document.documentElement.style.setProperty(color, element)
+                document.documentElement.style.setProperty(color, element);
             } else {
-                document.documentElement.style.setProperty(color, "")
+                document.documentElement.style.setProperty(color, "");
             }
         }
     }
 }
 
-function _downloadPrez(url="./prez.md") {
+function _downloadPrez(url = "./prez.md") {
     return httpRequest.getText(url);
 }
 
@@ -52772,12 +52775,12 @@ function _prezify(html) {
     let slides = [];
     let slideIndex = -1;
 
-    for (let i = 0 ; i < elements.length ; i++) {
+    for (let i = 0; i < elements.length; i++) {
         let slide = {
             type: undefined,
             title: undefined,
             slug: undefined,
-            node: undefined
+            node: undefined,
         };
         const nodeName = elements[i].nodeName;
 
@@ -52822,20 +52825,20 @@ function _prezify(html) {
 }
 
 function _highlight(prez) {
-    let {rootNode} = prez;
+    let { rootNode } = prez;
     let code = rootNode.querySelectorAll("pre > code");
-    for (let i = 0 ; i < code.length ; i++) {
+    for (let i = 0; i < code.length; i++) {
         highlightjs.highlightBlock(code[i]);
     }
     return prez;
 }
 
 function _resolveUrls(prez) {
-    let {rootNode} = prez;
+    let { rootNode } = prez;
     const rootPath = `${location.protocol}//${location.host}${location.pathname}`;
 
     let images = rootNode.querySelectorAll("img, video, audio");
-    for (let i = 0 ; i < images.length ; i++) {
+    for (let i = 0; i < images.length; i++) {
         let image = images[i];
         let imagePath = image.src;
         if (imagePath.indexOf(rootPath) === 0) {
@@ -52847,8 +52850,7 @@ function _resolveUrls(prez) {
     return prez;
 }
 
-function _doPrez({rootNode, slides, title}) {
-
+function _doPrez({ rootNode, slides, title }) {
     const SLIDES_WIDTH = 1024;
     const SLIDES_HEIGHT = 768;
     const DRAG_THRESHOLD = 50;
@@ -52867,16 +52869,20 @@ function _doPrez({rootNode, slides, title}) {
     }
 
     function _updateSlides() {
-        for (let i = 0 ; i < slides.length ; i++) {
+        for (let i = 0; i < slides.length; i++) {
             let slide = slides[i];
             slide.node.classList.remove("slide-flow-prev");
             slide.node.classList.remove("slide-flow-current");
             slide.node.classList.remove("slide-flow-next");
 
-            if (i === config.slide - 1) slide.node.classList.add("slide-flow-prev");
-            if (i === config.slide) slide.node.classList.add("slide-flow-current");
-            if (i === config.slide + 1) slide.node.classList.add("slide-flow-next");
-            if (slide.node.firstChild.nodeName === "HR") slide.node.firstChild.remove();
+            if (i === config.slide - 1)
+                slide.node.classList.add("slide-flow-prev");
+            if (i === config.slide)
+                slide.node.classList.add("slide-flow-current");
+            if (i === config.slide + 1)
+                slide.node.classList.add("slide-flow-next");
+            if (slide.node.firstChild.nodeName === "HR")
+                slide.node.firstChild.remove();
         }
     }
 
@@ -52937,7 +52943,8 @@ function _doPrez({rootNode, slides, title}) {
         }
         // Firefox
         if (event.axis !== undefined && event.detail !== undefined) {
-            if (event.axis == 2) { // Y
+            if (event.axis == 2) {
+                // Y
                 wheelDelta = -event.detail;
             }
         }
@@ -52981,12 +52988,12 @@ function _doPrez({rootNode, slides, title}) {
 
     function _targetBlankLink() {
         const targetLinks = document.getElementsByTagName("a");
-         for (const targetLink in targetLinks) {
-             if (Object.hasOwnProperty.call(targetLinks, targetLink)) {
-                 const element = targetLinks[targetLink];
-                 element.target = "_blank"
-             }
-         }
+        for (const targetLink in targetLinks) {
+            if (Object.hasOwnProperty.call(targetLinks, targetLink)) {
+                const element = targetLinks[targetLink];
+                element.target = "_blank";
+            }
+        }
     }
 
     document.body.appendChild(rootNode);
@@ -53002,7 +53009,6 @@ function _doPrez({rootNode, slides, title}) {
     _updateSlides();
     _updatePrez();
     _targetBlankLink();
-
 }
 
 function prezFromUrl(prezUrl) {
@@ -53013,7 +53019,7 @@ function prezFromUrl(prezUrl) {
         .then(_highlight)
         .then(_resolveUrls)
         .then(_doPrez)
-        .catch(e => {
+        .catch((e) => {
             console.error(e);
             alert(e);
         })
@@ -53027,7 +53033,7 @@ function prezFromText(prezText) {
         .then(_highlight)
         .then(_resolveUrls)
         .then(_doPrez)
-        .catch(e => {
+        .catch((e) => {
             console.error(e);
             alert(e);
         })
