@@ -52623,7 +52623,7 @@ function extend() {
 }
 
 },{}],45:[function(require,module,exports){
-const prez = require("./prez.js")
+const prez = require("./prez.js");
 
 function hideHome() {
     const eHomeDiv = document.getElementById("wanaprez-home");
@@ -52659,13 +52659,13 @@ function main() {
         const prezText = eTextField.value;
         console.log("Loading prez from text");
         hideHome();
-        prez.prezFromText(prezText)
+        prez.prezFromText(prezText);
     }
 
     function startFromDemo(event) {
         console.log("Loading demo prez");
         event.preventDefault();
-        hideHome()
+        hideHome();
         prez.prezFromUrl("./prez.md");
     }
 
@@ -52679,11 +52679,11 @@ addEventListener("load", main);
 module.exports = {
     hideHome,
     showHome,
-}
+};
 
 },{"./prez.js":47}],46:[function(require,module,exports){
-const prez = require("./prez.js")
-const home = require("./home.js")
+const prez = require("./prez.js");
+const home = require("./home.js");
 
 function main() {
     if (prez.config.url != "/") {
@@ -52781,7 +52781,7 @@ function _prezify(html) {
         };
         const nodeName = elements[i].nodeName;
 
-        if ("H1 H2 H3 HR".includes(nodeName)) {
+        if (["H1", "H2", "H3", "HR"].includes(nodeName)) {
             slideIndex += 1;
             slide.node = document.createElement("div");
             slide.title = elements[i].innerText;
@@ -52797,6 +52797,7 @@ function _prezify(html) {
                     slide.type = "infill-title";
                     break;
                 case "HR":
+                    slide.title = "";
                     slide.slug = `break-${slideIndex}`;
                     break;
                 default:
