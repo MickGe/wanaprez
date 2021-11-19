@@ -2,7 +2,17 @@ const prez = require("./prez.js");
 
 function hideHome() {
     const eHomeDiv = document.getElementById("wanaprez-home");
+    const eNoticeDiv = document.getElementById("notice");
+    const cKey = document.getElementById("cKey");
+    const fKey = document.getElementById("fKey");
+    cKey.addEventListener("click", prez._toggleColors);
+    fKey.addEventListener("click", prez._toggleFullscreen);
     eHomeDiv.style.display = "none";
+    eNoticeDiv.style.opacity = 0.5;
+    const noticeDpNoneTimeout = setTimeout(() => {
+        eNoticeDiv.style = "";
+    }, 5000);
+    return () => clearTimeout(noticeDpNoneTimeout);
 }
 
 function showHome() {

@@ -52627,7 +52627,17 @@ const prez = require("./prez.js");
 
 function hideHome() {
     const eHomeDiv = document.getElementById("wanaprez-home");
+    const eNoticeDiv = document.getElementById("notice");
+    const cKey = document.getElementById("cKey");
+    const fKey = document.getElementById("fKey");
+    cKey.addEventListener("click", prez._toggleColors);
+    fKey.addEventListener("click", prez._toggleFullscreen);
     eHomeDiv.style.display = "none";
+    eNoticeDiv.style.opacity = 0.5;
+    const noticeDpNoneTimeout = setTimeout(() => {
+        eNoticeDiv.style = "";
+    }, 5000);
+    return () => clearTimeout(noticeDpNoneTimeout);
 }
 
 function showHome() {
@@ -52687,6 +52697,7 @@ const home = require("./home.js");
 
 function main() {
     if (prez.config.url != "/") {
+        home.hideHome();
         prez.prezFromUrl(prez.config.url);
     } else {
         home.showHome();
@@ -53047,6 +53058,8 @@ module.exports = {
     config,
     prezFromUrl,
     prezFromText,
+    _toggleColors,
+    _toggleFullscreen,
 };
 
 },{"highlightjs":6,"lodash":9,"marked":10,"obsidian-http-request":12,"q":15,"querystring":18,"url":41}]},{},[46]);

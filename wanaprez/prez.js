@@ -349,4 +349,6 @@ module.exports = {
     config,
     prezFromUrl,
     prezFromText,
+    _toggleColors,
+    _toggleFullscreen,
 };

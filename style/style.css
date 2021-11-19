@@ -250,3 +250,33 @@ blockquote {
     background: transparent;
     color: var(--color-main-after);
 }
+
+#notice {
+    /* display: none; */
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    background-color: #a8a8a82a;
+    border-radius: 10px;
+    padding: 0.3em;
+    user-select: none;
+    opacity: 0;
+    transition: opacity 1.5s 0.5s;
+}
+
+#notice:hover {
+    opacity: 0.5;
+}
+
+.instruction {
+    cursor: pointer;
+    margin: 5px;
+}
+
+.key-char {
+    font-weight: 800;
+}
+
+.key-fct {
+    padding-left: 0.25em;
+}

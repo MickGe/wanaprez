@@ -3,6 +3,7 @@ const home = require("./home.js");
 
 function main() {
     if (prez.config.url != "/") {
+        home.hideHome();
         prez.prezFromUrl(prez.config.url);
     } else {
         home.showHome();
