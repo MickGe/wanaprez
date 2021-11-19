@@ -255,17 +255,21 @@ blockquote {
     /* display: none; */
     position: absolute;
     bottom: 5%;
-    left: 5%;
+    right: 5%;
     background-color: #a8a8a82a;
     border-radius: 10px;
     padding: 0.3em;
+    font-size: 70%;
+    line-height: 1.5em;
     user-select: none;
     opacity: 0;
-    transition: opacity 1.5s 0.5s;
+    transition: all 1.5s 0.5s;
+    transform: translateX(calc(5vw + 85%));
 }
 
 #notice:hover {
     opacity: 0.5;
+    transform: unset;
 }
 
 .instruction {

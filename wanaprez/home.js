@@ -9,6 +9,7 @@ function hideHome() {
     fKey.addEventListener("click", prez._toggleFullscreen);
     eHomeDiv.style.display = "none";
     eNoticeDiv.style.opacity = 0.5;
+    eNoticeDiv.style.transform = "unset";
     const noticeDpNoneTimeout = setTimeout(() => {
         eNoticeDiv.style = "";
     }, 5000);
